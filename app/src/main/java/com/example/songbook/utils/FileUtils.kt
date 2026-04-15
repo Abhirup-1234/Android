@@ -2,6 +2,7 @@ package com.example.songbook.utils
 
 import android.content.Context
 import android.net.Uri
+import android.provider.OpenableColumns
 import java.io.File
 import java.io.IOException
 import java.util.UUID
@@ -25,7 +26,7 @@ object FileUtils {
     fun fileNameFromUri(context: Context, uri: Uri): String {
         val cursor = context.contentResolver.query(uri, null, null, null, null)
         cursor?.use {
-            val nameIndex = it.getColumnIndex("_display_name")
+            val nameIndex = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
             if (it.moveToFirst() && nameIndex >= 0) {
                 return it.getString(nameIndex)
             }
