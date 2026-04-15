@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="corner_large">20dp</dimen>
+</resources>

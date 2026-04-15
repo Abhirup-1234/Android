@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.SongBook" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+        <item name="colorPrimary">@color/accent_1</item>
+        <item name="colorSecondary">@color/accent_2</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+</resources>
