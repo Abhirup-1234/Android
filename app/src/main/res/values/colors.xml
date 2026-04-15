@@ -1,0 +1,11 @@
+<resources>
+    <color name="bg_1">#1A1A2E</color>
+    <color name="bg_2">#16213E</color>
+    <color name="bg_3">#0F3460</color>
+    <color name="glass_fill">#14FFFFFF</color>
+    <color name="glass_stroke">#2EFFFFFF</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#A6FFFFFF</color>
+    <color name="accent_1">#A78BFA</color>
+    <color name="accent_2">#818CF8</color>
+</resources>
