@@ -23,6 +23,7 @@ import com.example.songbook.ui.common.ServiceLocator
 import com.example.songbook.utils.FileUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
+import java.io.IOException
 import java.io.File
 
 class AddEditFragment : Fragment() {
@@ -147,7 +148,11 @@ class AddEditFragment : Fragment() {
                 originalSong?.pdfPath?.let(FileUtils::deleteInternalFile)
                 FileUtils.copyPdfToInternalStorage(requireContext(), it)
             } ?: selectedPdfPath
-        } catch (_: Exception) {
+        } catch (_: SecurityException) {
+            binding.pdfName.visibility = View.VISIBLE
+            binding.pdfName.text = getString(R.string.pdf_copy_failed)
+            return
+        } catch (_: IOException) {
             binding.pdfName.visibility = View.VISIBLE
             binding.pdfName.text = getString(R.string.pdf_copy_failed)
             return
@@ -175,7 +180,7 @@ class AddEditFragment : Fragment() {
 
     private fun requestPermissionAndPick() {
         val required = when {
-            Build.VERSION.SDK_INT >= 34 -> listOf(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
+            Build.VERSION.SDK_INT >= 33 -> listOf(Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
             Build.VERSION.SDK_INT <= 32 -> listOf(Manifest.permission.READ_EXTERNAL_STORAGE)
             else -> emptyList()
         }
