@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHost.navController
-        setupActionBarWithNavController(navController, AppBarConfiguration(setOf(R.id.songListFragment)))
+        supportActionBar?.let {
+            setupActionBarWithNavController(navController, AppBarConfiguration(setOf(R.id.songListFragment)))
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
